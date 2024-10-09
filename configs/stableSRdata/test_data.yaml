@@ -50,7 +50,7 @@ model:
     first_stage_config:
       target: ldm.models.autoencoder.AutoencoderKL
       params:
-        ckpt_path: /mnt/lustre/jywang/code/stable_diffmodels/v2-1_512-ema-pruned.ckpt
+        ckpt_path: StableSR/cv_stablesr_image-super-resolution/stablesr_000117.ckpt
         embed_dim: 4
         monitor: val/rec_loss
         ddconfig:
@@ -121,6 +121,7 @@ degradation:
   jpeg_range2: [60, 100]
 
   gt_size: 512
+  no_degradation_prob: 0.01
 
 data:
   target: main.DataModuleFromConfig
@@ -132,8 +133,8 @@ data:
       target: basicsr.data.realesrgan_dataset.RealESRGANDataset
       params:
         queue_size: 180
-        gt_path: '/mnt/lustre/jywang/dataset/df2k_ost/GT/'
-        face_gt_path: '/mnt/lustre/jywang/dataset/FFHQ/512_ffhq/512/'
+        gt_path: '/finn/finn/StableSR/data/stablesr/batch_1_5625/'
+        #face_gt_path: '/mnt/lustre/jywang/dataset/FFHQ/512_ffhq/512/'
         # gt_path: /mnt/lustre/jywang/dataset/ImageSR/DIV2K/DIV2K_train_HR/
         num_face: 2000
         crop_size: 512
@@ -164,7 +165,7 @@ data:
     validation:
       target: basicsr.data.realesrgan_dataset.RealESRGANDataset
       params:
-        gt_path: /mnt/lustre/jywang/dataset/ImageSR/DIV2K/DIV2K_train_HR/
+        gt_path: /finn/finn/StableSR/data/stablesr/batch_1_5625/
         crop_size: 512
         io_backend:
           type: disk
@@ -200,8 +201,8 @@ test_data:
     test:
       target: basicsr.data.realesrgan_dataset.RealESRGANDataset
       params:
-        gt_path: ['/mnt/lustre/share/jywang/dataset/DIV8K/train_HR/', '/mnt/lustre/share/jywang/dataset/df2k_ost/GT/']
-        face_gt_path: '/mnt/lustre/share/jywang/dataset/FFHQ/512_ffhq/512/'
+        gt_path: ['/finn/finn/StableSR/data/stablesr/batch_1_5625/']
+        #face_gt_path: '/mnt/lustre/share/jywang/dataset/FFHQ/512_ffhq/512/'
         num_face: 2000
         crop_size: 512
         mul_num: 10

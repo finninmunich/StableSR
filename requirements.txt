@@ -1,5 +1,5 @@
-torch==1.13.1
-torchvision==0.14.1
+#torch==1.13.1
+#torchvision==0.14.1
 albumentations==1.3.0
 opencv-python==4.6.0.66
 imageio==2.9.0
@@ -22,6 +22,6 @@ triton
 matplotlib
 wandb
 pillow
--e git+https://github.com/CompVis/taming-transformers.git@master#egg=taming-transformers
--e git+https://github.com/openai/CLIP.git@main#egg=clip
--e .
+#-e git+https://github.com/CompVis/taming-transformers.git@master#egg=taming-transformers
+#-e git+https://github.com/openai/CLIP.git@main#egg=clip
+#-e .
